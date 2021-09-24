@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Club</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar h-nav">
+        <div class="fit">
+            <h1>Fitness Club</h1>
+        </div>
+        <div class="left v-class">
+
+            <ul class="navlist">
+                <!-- <div class="logo"><img src="logo.png" alt="logo"></div> -->
+                <li><a href="/">Home</a></li>
+                <li><a href="/class.html">Classes</a></li>
+                <li><a href="/about.html">About us</a></li>
+                <li><a href="/contact.html">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="right v-class">
+            {% if user.is_authenticated %}
+            <a class="nav" href='#' role="button" aria-expanded="false">Welcome {{request.user}}</a>
+            <ul class="navbar-nav">
+                <li><button class="head-bt"><a href="/logout" class="drop1"
+                            style="text-decoration: none;" > Logout</a></button></li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="btns">
+            <button class="head-bt" data-bs-toggle="modal" data-bs-target="#LogInModal">LogIn</button>
+            <button class="head-bt" data-bs-toggle="modal" data-bs-target="#SignUpModal">SignUp</button>
+        </div>
+        {% endif %}
+        </div>
+        {% comment %}
+        <div class="bar">&equiv;</div> {% endcomment %}
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+     {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <!-- login Modal -->
+    <div class="modal fade" id="LogInModal" tabindex="-1" aria-labelledby="LogInModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LogInModal">LogI to Fitness Club</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/login" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="loginusername" name="loginusername"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginpassword" name="loginpassword">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">LogIn</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- signup Modal -->
+    <div class="modal fade" id="SignUpModal" tabindex="-1" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="SignUpModalLabel">SignUp to Fitness CLub</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/signup" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputName" class="form-label">Name</label>
+                            <input type="name" class="form-control" id="username" name="username"
+                                aria-describedby="emailHelp">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="useremail" name="useremail"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="pass1" name="pass1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cexampleInputPassword1" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="pass2" name="pass2">
+                        </div>
+                        <button type="submit" class="btn btn-primary">SignUp</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="section" id="classes">
+        <h1 class="box">CLASSES</h1>
+        <p class="abt_disc">From the moment you walk through the door you know Gymbase is a unique place</p>
+        <p class="abt_disc disc">When we created Gym Base, we knew we wanted to be more than just a simple gym. Having
+            worked in traditional gyms in the past, we knew we needed to create a concept that would provide our members
+            with the most effective tools for success. This meant we needed to offer a wide range of classes both for
+            children and adults.
+            <br>
+            <br>
+            This also meant we needed to provide a learning environment run by experienced and successful coaches.
+            However, our most important goal was to create a welcoming atmosphere and community in which everyone feels
+            a sense of belonging.
+            <br>
+            <br>
+            our gym website is a crucial marketing tool and a key part of your success. But having a gym website
+                    is one thing. Having an effective site that makes you stand out from competitors and drives
+                    potential members to take action is another.
+        </p>
+        <br>
+        <br>
+        <h3 style="text-align: center; font-weight: bold;">Type Of Classes</h3>
+        <br>
+        <div class="classes">
+            <div class="sec "><img src="./static/i1.jpg" alt="image">
+                <h3 class="what">Body Building</h3>
+                <p>Bodybuilding is the use of progressive resistance exercise to control and develop one's muscles by muscle hypertrophy for aesthetic purposes. It is distinct from similar activities such as powerlifting because it focuses on physical appearance instead of strength. <a href="https://en.wikipedia.org/wiki/Bodybuilding" target="_blank">Read more</a> </p>
+            </div>
+            <div class="sec "><img src="./static/i6.jpg" alt="image">
+                <h3 class="what">Cardio</h3>
+                <p>Running is a method of terrestrial locomotion allowing humans and other animals to move rapidly on foot. Running is a type of gait characterized by an aerial phase in which all feet are above the ground (though there are exceptions). This is in contrast to walking, where one foot is <a href="https://en.wikipedia.org/wiki/Running" target="_blank">Read more</a> </p>
+            </div>
+            <div class="sec "><img src="./static/i4.png" alt="image">
+                <h3 class="what">Yoga</h3>
+                <p>Yoga (Sanskrit: योग; About this soundpronunciation) is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India. Yoga is one of the six orthodox philosophical schools of Hinduism.There is a broad variety of yoga schools, practices, and goals in Hinduism, Buddhism, and Jainism. <a href="https://en.wikipedia.org/wiki/Yoga" target="_blank">Read more</a> </p>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <h3 style="text-align: center; font-weight: bold;">Daily Schedule</h3>
+        <br>
+        <div class="classes">
+            <div class="sec "><img src="./static/i3.jpg" alt="image">
+                <h3 class="what">Chest Day</h3>
+                <p>Barbell bench press (medium, wide, or close grip) |
+                    Barbell floor press |
+                    Barbell bench press with chains |
+                    Bench press with a neutral grip, "Swiss bar," or multi-grip bar 
+                    <a href="https://youtu.be/mQMA88jJrFc" target="_blank">watch this video</a>
+                </p>
+            </div>
+            <div class="sec "><img src="./static/back.jpg" alt="image">
+                <h3 class="what">Back Day</h3>
+                <p>Barbell deadlift (from the floor) <br>
+                    Barbell rack pull <br>
+                    Romanian deadlift (barbell, dumbbell) <br>
+                    Snatch-grip deadlift (from the floor or elevated pins) <br>
+                    Trap bar deadlift </p>
+                    <a href="https://youtu.be/QGyaUK-2Zvo" target="_blank">watch this video</a>
+            </div>
+            <div class="sec "><img src="./static/shoulder.jpg" alt="image">
+                <h3 class="what">Shoulder Day</h3>
+                <p>Barbell Overhead Shoulder Press. 
+                    Seated Dumbbell Shoulder Press. 
+                    Front Raise.
+                    Reverse Pec Deck Fly. 
+                    Bent-Over Dumbbell Lateral Raise.
+                    Dumbbell Lateral Raise.
+                    Push Press.
+                    Reverse Cable Crossover. </p>
+                    <a href="https://youtu.be/_TKFa5QultI" target="_blank">watch this video</a>
+
+            </div>
+            <div class="sec "><img src="./static/i2.jpg" alt="image">
+                <h3 class="what">Leg Day</h3>
+                <p>Dumbbell step-up. <br>
+                    Glute bridge. <br>
+                    Calf raise. <br>
+                    Leg curl. <br>
+                    Leg extension. <br>
+                    Leg press.
+                    </p>
+                    <a href="https://youtu.be/LWdhO_OMrHk" target="_blank">watch this video</a>
+
+            </div>
+            <div class="sec "><img src="./static/arms.jpg" alt="image">
+                <h3 class="what">Arms Day</h3>
+                <p>Barbell Bicep Curl. Muscles Targeted: Biceps Brachii (Long Head & Short Head) <br>
+                    Dumbbell Preacher Curl. <br>
+                    Cable Bicep Curl. <br>
+                    Skull Crusher. <br>
+                    Cable Triceps Pushdown. <br>
+                    Single-Arm Dumbbell Overhead Triceps Extension. </p>
+                    <a href="https://youtu.be/GxjWKyzMx3E" target="_blank">watch this video</a>
+
+            </div>
+            <div class="sec "><img src="./static/abs.jpg" alt="image">
+                <h3 class="what">Abs Day</h3>
+                <p>1 Dumbbell crunch. Reps 10 Rest 10sec.
+                    2 Tuck and crunch. Reps 15 Rest 10sec.
+                    3 Modified V-sit. Reps 12 Rest 10sec.
+                    4 Crunch. Reps 20 Rest 90sec.
+                    1 Hanging leg raise. Reps 10 Rest 10sec.
+                    2 Hanging knee raise twist. Reps 12 each side Rest 10sec.
+                    3 Hanging knee raise. Reps 15 Rest 10sec.</p>
+                    <a href="https://youtu.be/Rgdd10jaIXQ" target="_blank">watch this video</a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        Copyright &copy; 2021-22 - Siddharth Prajapati
+    </footer>
+    <script src="./static/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

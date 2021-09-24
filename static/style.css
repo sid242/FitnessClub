@@ -1,0 +1,381 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+
+/* -----------INDEX.CSS----------- */
+/* NAVBAR */
+.nav{
+  font-weight: bold !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 1.2rem !important;
+  text-decoration: none !important;
+  color: black !important;
+}
+.drop1{
+  color: black;
+  /* font-weight: bold !important; */
+}
+.drop1:hover{
+  color: white;
+  /* font-weight: bold !important; */
+}
+.navbar {
+  background-color: skyblue;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+.navlist {
+  display: flex;
+  align-items:center;
+  list-style-type: none;
+}
+.navlist li a {
+  text-decoration: none;
+  color: black;
+  margin: 1rem;
+  font-size: 26px;
+  cursor: pointer;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.navlist a:hover {
+  color: grey;
+  border-bottom: 3px solid rgb(223, 23, 23);
+}
+
+.fit {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(70 72 101);
+  font-size: 20px;
+  position:relative !important;
+  left: 1.2rem !important;
+  top: 0.2rem !important;
+}
+.right {
+  display: flex;
+  align-items: center;
+  margin: 0 2rem;
+  justify-content: center;
+}
+.head-bt {
+  padding: 0.2rem 0.32rem;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  margin: 0 0.4rem;
+}
+.head-bt:hover{
+  background-color: black;
+  color: white;
+}
+
+.burger {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  right: 3%;
+  top: 12px;
+}
+
+.line {
+  height: 4px;
+  width: 33px;
+  margin: 5px;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.mid {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
+}
+.mid::before {
+  content: "";
+  background: url("/static/i4.png");
+  background-position: center center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  filter: blur(5px);
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  opacity: 0.6;
+  z-index: -1;
+}
+.mid h3 {
+  font-size: 2rem;
+}
+
+.mid h1 {
+  font-size: 3rem;
+}
+
+.mid .params {
+  width: 80%;
+  margin: auto;
+  font-size: 1.2rem;
+  /* font-weight: bold; */
+}
+
+/* -----------CLASS.CSS----------- */
+
+.classes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  /* border: 2px solid grey; */
+  width: 80vw;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.abt_disc {
+  text-align: center;
+  margin: 1rem;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.disc {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 30px;
+}
+
+.box {
+  font-size: 44px;
+  margin-top: 23px;
+  text-align: center;
+}
+
+.sec {
+  border: 2px solid black;
+  padding: 1.4rem;
+  margin: 0.4rem 0.6rem;
+  border-radius: 28px;
+  width: 29%;
+}
+
+.sec img {
+  /* height: 160px; */
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.what {
+  text-align: center;
+  font-size: 23px;
+  padding-top: 1rem;
+  padding-bottom: 0.3rem;
+}
+
+/* ----------CONTACT.CSS----------- */
+
+.contact {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  margin: auto;
+  height: 87vh;
+  
+}
+
+.c-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.c-form input {
+  margin: 0.5rem 0;
+  border: 2px solid black;
+  border-radius: 7px;
+  padding: 0.3rem;
+  width: 80vw;
+  background: transparent;
+  font-size: 1rem;
+}
+.c-form textarea {
+  margin: 0.5rem 0;
+  border: 2px solid black;
+  border-radius: 7px;
+  padding: 0.3rem;
+  width: 80vw;
+  background: transparent;
+  font-size: 1rem;
+}
+.btn-call {
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.3rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.btn-call a{
+  text-decoration: none !important;
+  color: black;
+}
+.btn-call a:hover{
+  color: white;
+}
+.btn-call:hover {
+  background-color: black;
+  color: white;
+}
+.contact::before {
+  content: "";
+  background: url("/static/c3.jpg");
+  background-position: center center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  filter: blur(5px);
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* ----------FOOTER.CSS----------- */
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  position:relative;
+  width: 100%;
+  bottom: 0;
+}
+
+/* ----------ABOUT.CSS----------- */
+
+.contain {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 86vw;
+  margin-top: 4%;
+  font-size: 22px;
+}
+
+.cards-about {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 80vw;
+  font-weight: 400;
+  margin-top: 1%;
+  margin-bottom: 6%;
+  height: 100%;
+}
+.card-about img {
+  width: 83%;
+  border-radius: 10px;
+  border: 2px solid rgb(108, 150, 218);
+}
+.card-about h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 22px;
+}
+.card-about {
+  text-align: center;
+  border: 3px solid black;
+  padding: 7px;
+  border-radius: 10px;
+  margin: 4px 6px;
+}
+.card-about p {
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.btn-card a {
+  border: 2px solid black;
+  border-radius: 6px;
+  background: black;
+  font-size: 1rem;
+  display: block;
+  color: white;
+  margin: 0.4rem 0;
+  text-decoration: none;
+  font-weight: bold;
+  outline: none;
+}
+.btn-card a:hover{
+  color: white;
+}
+@media only screen and (max-width: 1100px) {
+  .navbar{
+    flex-direction: column;
+    height: 300px;
+    width: 100% !important;
+    top: 0 !important;
+    transition: all 0.5s ease-in-out;
+  }
+  .navlist {
+    flex-direction: column;
+    padding: 5px 5px;
+    margin: 25px 0;
+    align-items: flex-start;
+  }
+  .fit{
+    position: absolute !important;
+    left: 1rem !important;
+  }
+  .left {
+    flex-direction: column;
+  }
+  .right {
+    flex-direction: column;
+    display: block;
+  }
+  .burger {
+    display: block;
+  }
+  .h-nav {
+    height: 70px;
+  }
+  .v-class {
+    opacity: 0;
+  }
+  .cards-about {
+    flex-direction: column;
+  }
+  .contain {
+    flex-direction: column;
+  }
+  .left-about,
+  .right-about,
+  .mid-about {
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin: 1rem 0;
+  }
+  .sec {
+    width: auto;
+  }
+}
